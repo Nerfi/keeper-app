@@ -3,10 +3,13 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Note from "./components/Note";
 import CreateArea from "./components/CreateArea";
+import FakeComponent from "./components/FakeComponent";
 
 function App() {
 
   const [notes, setNotes] = useState([]);
+  //testing the API
+  const [fakeNotes, setFakeNotes] = useState([]);
 
   //adding note to the notes array
   function handleAdd(newNote) {
@@ -28,6 +31,7 @@ function App() {
   return (
     <div>
       <Header />
+      <FakeComponent />
       <CreateArea addNote={handleAdd} />
 
     { notes.map((note, index) => {
