@@ -7,6 +7,7 @@ import CreateArea from "./components/CreateArea";
 function App() {
 
   const [notes, setNotes] = useState([]);
+
   //adding note to the notes array
   function handleAdd(newNote) {
     setNotes(prevNotes => {

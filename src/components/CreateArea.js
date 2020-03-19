@@ -10,6 +10,7 @@ function CreateArea({ addNote }) {
     content: ""
   });
 
+// in this function what we're doing is just taking the user input and added it to our notes object.
 function newState(e) {
   const {name, value}  = e.target;
   setNotes(prevNotes => {
@@ -32,11 +33,14 @@ function newState(e) {
         title: "",
         content: ""
       });
+
+      // the prop we send from the parent is call addNote, therefore in order to use that function in this component, since that function acepts a parameter
+      //the parameter I'll revice is the new note, in this case a whole bunch of notes, that are added trought the newState function.
       addNote(notes);
     }else {
       alert("you need to typed in something");
     }
-
+    //here we're just cleaning up the function, after the button gets click isTouch will come back to it's inital state: false.
     setTouch(!isTouch);
 
   }
