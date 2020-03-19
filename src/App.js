@@ -1,15 +1,27 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Note from "./components/Note";
 import CreateArea from "./components/CreateArea";
-import FakeComponent from "./components/FakeComponent";
 
 function App() {
 
   const [notes, setNotes] = useState([]);
+
   //testing the API
   const [fakeNotes, setFakeNotes] = useState([]);
+
+  //fetching the fake data to see if it works.
+  async function fetchData(){
+    const fakeData = await fetch('http://localhost:8000/notes');
+    const response =  await fakeData.json();
+    setFakeNotes(response);
+  }
+
+  //adding useEffect hook once the component mounted.
+  useEffect(() => {
+    fetchData();
+  },[])
 
   //adding note to the notes array
   function handleAdd(newNote) {
@@ -28,10 +40,17 @@ function App() {
     });
   }
 
+  function deleteNotes(id){
+    setFakeNotes(prevNotes => {
+        return prevNotes.filter((item, index) => {
+          return id !== index;
+        });
+    });
+  }
+
   return (
     <div>
       <Header />
-      <FakeComponent />
       <CreateArea addNote={handleAdd} />
 
     { notes.map((note, index) => {

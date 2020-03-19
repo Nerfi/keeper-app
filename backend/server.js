@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const notes = require("./data/notes");
+//addign mongo
+const mongoose = require("mongoose");
 
 app.use(bodyParser.json(""));
 app.use(cors());
