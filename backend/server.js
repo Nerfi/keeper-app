@@ -10,6 +10,8 @@ const mongoose = require("mongoose");
 
 app.use(bodyParser.json(""));
 app.use(cors());
+
+
 //this route it's hoted: http://localhost:8000/notes;
 app.get('/notes', (req, res) => res.send(notes))
 
