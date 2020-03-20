@@ -7,7 +7,6 @@ const port = 3001;
 
 //importing db connection
 const db = require("./db");
-console.log(db, "db over here");
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
@@ -21,3 +20,7 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () => console.log(`Server running on port ${port}`))
+
+//listening to error
+//not working on method
+//db.on('error', console.error.bind(console, 'MongoDB connection error:'));

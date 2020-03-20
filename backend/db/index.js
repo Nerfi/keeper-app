@@ -6,6 +6,6 @@ mongoose
   console.error('Connection error', err.message)
 });
 
-const db = mongoose.Connection;
+const db = mongoose.connection;
 
 module.export = db;
