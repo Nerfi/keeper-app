@@ -10,7 +10,6 @@ const db = require("./db");
 
 //importing routes
 const noteRoutes = require("./routes/note-router");
-console.log(noteRoutes);
 
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -23,6 +22,10 @@ app.use(bodyParser.json())
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
+
+// using the APi, dont know why is 'api', need to find info
+app.use('/api', noteRoutes);
+
 
 app.listen(port, () => console.log(`Server running on port ${port}`))
 
