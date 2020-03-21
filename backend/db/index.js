@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 //remember, the name of the DB is the what comes after the las `/` in this case is notes.`
 mongoose
-.connect('mongodb://127.0.0.1:27017/notes', {useNewUrlParser: true, useUnifiedTopology: true})
+.connect('mongodb://localhost:27017/notes', {useNewUrlParser: true, useUnifiedTopology: true})
 .catch(err => {
   console.error('Connection error', err.message)
 });
