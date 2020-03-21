@@ -1,14 +1,13 @@
 const Note = require('../models/note-model');
-
-
 //CRUD operations
 
  createNote = (req, res) => {
   //in case something fails this might be the reason why, do not know how
   //the app knows that the body contains the name and content of the note component!
-  const body = req.body;
+  const {title, content} = req.body;
 
- if(!body) {
+// chech the github repo of this tutorial in case i need to change something
+ if(!title &&  !content){
   return res.status(400).json({
     success: false,
     error: 'You must provide a note',
@@ -16,7 +15,7 @@ const Note = require('../models/note-model');
 
  }
 
-  const note = new Note(body);
+  const note = new Note({title, content});
 
   if(!note) {
     return res.status(400).json({success: false, error: err});
@@ -28,10 +27,17 @@ const Note = require('../models/note-model');
 
     return res.status(201).json({
       success: true,
-      id: note_id,
-      message: 'Note created' // the example added here a comma, not sure If i should do so.
+      id: "note_id",
+      message: 'Note created', // the example added here a comma, not sure If i should do so.
     });
 
+  })
+  .catch(err => {
+    return res.status(400).json({
+      err,
+      message: 'Note not created'
+
+    });
   })
 
 
