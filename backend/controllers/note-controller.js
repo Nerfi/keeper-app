@@ -18,17 +18,17 @@ const Note = require('../models/note-model');
   const note = new Note({title, content});
 
   if(!note) {
-    return res.status(400).json({success: false, error: err});
+    return res.status(400).json({success: false, error: "and erro has happened"});
   }
 
   note
   .save()
-  .then(() => {
+  .then((response) => {
 
     return res.status(201).json({
       success: true,
-      id: "note_id",
-      message: 'Note created', // the example added here a comma, not sure If i should do so.
+      id: response.id,
+      message: 'Note created' // the example added here a comma, not sure If i should do so.
     });
 
   })
@@ -73,7 +73,8 @@ updateNote = async (req,res) => {
       .then(() => {
         return res.status(200).json({
           success: true,
-          id: note_id,
+          //because note_id is the object
+          id: "note_id",
           message: "note updated!"
         })
       })
@@ -83,8 +84,6 @@ updateNote = async (req,res) => {
           message: "Note not updated!",
         })
       })
-
-
 
 
     })
