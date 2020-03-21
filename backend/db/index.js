@@ -6,6 +6,10 @@ mongoose
   console.error('Connection error', err.message)
 });
 
+// DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead
+//solution donwn below
+mongoose.set('useCreateIndex', true);
+
 const db = mongoose.connection;
 
 module.export = db;

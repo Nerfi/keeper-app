@@ -8,6 +8,11 @@ const port = 3001;
 //importing db connection
 const db = require("./db");
 
+//importing routes
+const noteRoutes = require("./routes/note-router");
+console.log(noteRoutes);
+
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 app.use(bodyParser.json())
