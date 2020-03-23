@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import AddIcon from '@material-ui/icons/Add';
 
 function CreateArea({ addNote }) {
@@ -11,8 +11,10 @@ function CreateArea({ addNote }) {
   });
 
 // in this function what we're doing is just taking the user input and added it to our notes object.
-function newState(e) {
+ function newState(e) {
+
   const {name, value}  = e.target;
+
   setNotes(prevNotes => {
     return {
       ...prevNotes,
@@ -23,24 +25,30 @@ function newState(e) {
 }
 
   async function addNotes(e){
-    //here I should create the create note and call the API
-      e.preventDefault();
+
     const {title, content} = notes;
+    //adding code for a POST request
+     const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: title, content: content })
+    };
 
-        if(title.length > 0 && content){
-          setNotes({
-            title: "",
-            content: ""
-          });
+    const newData =  fetch('http://localhost:3001/api/note', requestOptions)
+        .then(response => response.json())
+        .then(data => setNotes(data.id))
+        .catch(err => console.log(err));
 
-          // the prop we send from the parent is call addNote, therefore in order to use that function in this component, since that function acepts a parameter
-          //the parameter I'll revice is the new note, in this case a whole bunch of notes, that are added trought the newState function.
-          addNote(notes);
-        }else {
-          alert("you need to typed in something");
+        if(!title || !content){
+          alert("you need to provide a title or a content");
+          e.preventDefault();
         }
+      // the prop we send from the parent is call addNote, therefore in order to use that function in this component, since that function acepts a parameter
+      //the parameter I'll revice is the new note, in this case a whole bunch of notes, that are added trought the newState function.
+      addNote(notes);
     //here we're just cleaning up the function, after the button gets click isTouch will come back to it's inital state: false.
     setTouch(!isTouch);
+    e.preventDefault();
 
   }
 

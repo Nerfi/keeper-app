@@ -23,17 +23,10 @@ function App() {
 
 
   //adding note to the notes array
-   async function handleAdd(newNote) {
-    const addedData = await fetch('http://localhost:3001/api/note');
-    addedData
-    .json()
-    .then(prevNotes => setNotes([...prevNotes,addedData.data]))
-    .catch(err => console.log(err));
-
-
-   // setNotes(prevNotes => {
-     // return [...prevNotes, newNote];
-    //});
+  function handleAdd(newNote) {
+    setNotes(prevNotes => {
+      return [...prevNotes, newNote];
+    });
   }
 
 
@@ -61,6 +54,7 @@ function App() {
         title={note.title}
         content={note.content}
         onDelete={deleteNote}
+
         />
     }) }
 

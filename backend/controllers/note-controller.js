@@ -10,7 +10,7 @@ const Note = require('../models/note-model');
  if(!body){
   return res.status(400).json({
     success: false,
-    error: 'You must provide a note',
+    error: 'You must provide a note'
   });
 
  }
