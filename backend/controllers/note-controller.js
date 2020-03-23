@@ -70,18 +70,17 @@ updateNote = async (req,res) => {
       note.content = body.content
       note
       .save()
-      .then(() => {
+      .then((note_response) => {
         return res.status(200).json({
           success: true,
-          //because note_id is the object
-          id: "note_id",
+          id: note_response.id,
           message: "note updated!"
         })
       })
       .catch(error => {
         return res.status(400).json({
           err,
-          message: "Note not updated!",
+          message: "Note not updated!"
         })
       })
 
@@ -97,7 +96,7 @@ updateNote = async (req,res) => {
 
 deleteNote = async (req, res) => {
 
-  await Note.findOneAndDelete({_id: req.body.params.id}, (err, movie) => {
+  await Note.findOneAndDelete({_id: req.body.params.id}, (err, note) => {
     if(err) {
       return res.status(400).json({success: false, error: err})
     }
