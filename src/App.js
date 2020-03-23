@@ -11,7 +11,7 @@ function App() {
     const res = await fetch('http://localhost:3001/api/notes');
     res
       .json()
-      .then(res => setNotes(res))
+      .then(res => setNotes(res.data))
       .catch(err => console.log(err));
   }
 
@@ -20,7 +20,7 @@ function App() {
   },[]);
 
 
-  console.log(notes);
+  console.log(notes.data);
 
   //adding note to the notes array
   function handleAdd(newNote) {

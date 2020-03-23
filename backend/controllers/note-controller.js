@@ -18,7 +18,7 @@ const Note = require('../models/note-model');
   const note = new Note({title, content});
 
   if(!note) {
-    return res.status(400).json({success: false, error: "and erro has happened"});
+    return res.status(400).json({success: false, error: "and error has happened"});
   }
 
   note
@@ -28,7 +28,7 @@ const Note = require('../models/note-model');
     return res.status(201).json({
       success: true,
       id: response.id,
-      message: 'Note created' // the example added here a comma, not sure If i should do so.
+      message: 'Note created'
     });
 
   })
@@ -139,7 +139,7 @@ getNotes = async (req, res) => {
     if(!notes.length){
       return res.status(404).json({success: false, error:"Note not found"})
     }else {
-      return res.status(200).json({success: true, data: notes})
+      return res.status(200).json({success: true, data:notes})
     }
 
   }).catch(err => console.log(err))
