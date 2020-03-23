@@ -5,8 +5,9 @@ import Note from "./components/Note";
 import CreateArea from "./components/CreateArea";
 
 function App() {
-  const [notes, setNotes] = useState([]);
 
+  const [notes, setNotes] = useState([]);
+  //fetching all the notes, working
   async function fetchData() {
     const res = await fetch('http://localhost:3001/api/notes');
     res
@@ -15,29 +16,37 @@ function App() {
       .catch(err => console.log(err));
   }
 
-  useEffect(() => {
-    fetchData();
-  },[]);
+   useEffect(() => {
+     fetchData();
+   },[]);
 
 
-  console.log(notes.data);
 
   //adding note to the notes array
-  function handleAdd(newNote) {
-    setNotes(prevNotes => {
-      return [...prevNotes, newNote];
-    });
+   async function handleAdd(newNote) {
+    const addedData = await fetch('http://localhost:3001/api/note');
+    addedData
+    .json()
+    .then(prevNotes => setNotes([...prevNotes,addedData.data]))
+    .catch(err => console.log(err));
+
+
+   // setNotes(prevNotes => {
+     // return [...prevNotes, newNote];
+    //});
   }
 
 
   //delete item
-  function deleteNote(id){
-    setNotes(prevNotes => {
+  async function deleteNote(id){
+   setNotes(prevNotes => {
       return prevNotes.filter((item, index) =>{
         return id !== index;
       });
     });
+
   }
+
 
 
   return (
@@ -48,7 +57,7 @@ function App() {
     { notes.map((note, index) => {
        return <Note
         key={index}
-        id={note.id}
+        id={index.id}
         title={note.title}
         content={note.content}
         onDelete={deleteNote}
