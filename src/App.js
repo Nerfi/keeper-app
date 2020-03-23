@@ -5,23 +5,22 @@ import Note from "./components/Note";
 import CreateArea from "./components/CreateArea";
 
 function App() {
-
   const [notes, setNotes] = useState([]);
 
-  //testing the API
-  const [fakeNotes, setFakeNotes] = useState([]);
-
-  //fetching the fake data to see if it works.
-  async function fetchData(){
-    const fakeData = await fetch('http://localhost:8000/notes');
-    const response =  await fakeData.json();
-    setFakeNotes(response);
+  async function fetchData() {
+    const res = await fetch('http://localhost:3001/api/notes');
+    res
+      .json()
+      .then(res => setNotes(res))
+      .catch(err => console.log(err));
   }
 
-  //adding useEffect hook once the component mounted.
   useEffect(() => {
     fetchData();
-  },[])
+  },[]);
+
+
+  console.log(notes);
 
   //adding note to the notes array
   function handleAdd(newNote) {
@@ -40,13 +39,6 @@ function App() {
     });
   }
 
-  function deleteNotes(id){
-    setFakeNotes(prevNotes => {
-        return prevNotes.filter((item, index) => {
-          return id !== index;
-        });
-    });
-  }
 
   return (
     <div>
@@ -56,7 +48,7 @@ function App() {
     { notes.map((note, index) => {
        return <Note
         key={index}
-        id={index}
+        id={note.id}
         title={note.title}
         content={note.content}
         onDelete={deleteNote}
