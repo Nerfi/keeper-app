@@ -37,8 +37,8 @@ function CreateArea({ addNote }) {
     const newData =  fetch('http://localhost:3001/api/note', requestOptions)
         .then(response => response.json())
         .then(data => setNotes(data.id))
-        window.alert('Note save')
         .catch(err => console.log(err));
+        window.alert('Note save')
 
         if(!title || !content){
           alert("you need to provide a title or a content");
@@ -52,10 +52,7 @@ function CreateArea({ addNote }) {
     e.preventDefault();
 
   }
-  //not really working and dont know if I really needed
-  //useEffect(() => {
-    //addNotes();
-  //},[]);
+
 
 
   function touched(){
@@ -70,6 +67,7 @@ function CreateArea({ addNote }) {
           <input
            name="title"
            placeholder="Title"
+           required
            onChange={newState}
            value={notes.title}
           onClick={touched}

@@ -109,3 +109,27 @@ form.create-note button {
   cursor: pointer;
   outline: none;
 }
+
+
+/*update note component */
+
+
+form.update-note {
+  position: relative;
+  width: 150px;
+  background: #fff;
+  padding: 5px;
+  border-radius: 7px;
+  box-shadow: 0 1px 5px rgb(138, 137, 137);
+}
+
+form.update-note input,
+form.update-note textarea {
+  width: 100%;
+  border: none;
+  padding: 1px;
+  outline: none;
+  font-size: 1.2em;
+  font-family: inherit;
+  resize: none;
+}

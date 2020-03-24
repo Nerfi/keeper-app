@@ -40,6 +40,13 @@ function App() {
 
   }
 
+  //update function
+  function handleUpdate(id) {
+    setNotes(prevNotes => {
+      return [...prevNotes, id];
+    });
+  }
+
   return (
     <div>
       <Header />
@@ -52,6 +59,7 @@ function App() {
         title={note.title}
         content={note.content}
         onDelete={deleteNote}
+        onUpdate={handleUpdate}
 
         />
     }) }

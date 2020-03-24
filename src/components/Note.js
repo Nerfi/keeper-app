@@ -17,7 +17,7 @@ function Note({ title, content, onDelete, noteId }) {
       <h1 className="post">{title}</h1>
       <p>{content}</p>
       <button onClick={removeNote}>DELETE</button>
-      <UpdateComponent />
+      <UpdateComponent onUpdate={""} />
     </div>
   );
 }
