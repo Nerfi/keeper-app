@@ -1,12 +1,10 @@
 import React,{useState} from "react";
 
-const UpdateComponent = ({onUpdate, noteId}) => {
-  //setting state
+const UpdateComponent = ({onUpdate}) => {
   const [update,setUpdate] = useState({
       title: "",
       content: ""
     });
-  //the button update has not been touch as default
   const [touchUpdate, setTouch] = useState(false);
 
  function updateNote(e) {
