@@ -36,6 +36,14 @@ footer p {
   color: #000;
 
 }
+/* UPDATE button*/
+
+.update{
+  background: #fff;
+  box-shadow: 0 2px 5px #ccc;
+  float: left;
+}
+
 .note {
   background: #fff;
   border-radius: 7px;

@@ -31,7 +31,7 @@ function App() {
 
 
   //delete item
-  async function deleteNote(id){
+  function deleteNote(id){
    setNotes(prevNotes => {
       return prevNotes.filter((item, index) =>{
         return id !== index;
@@ -40,8 +40,6 @@ function App() {
 
   }
 
-
-
   return (
     <div>
       <Header />
@@ -49,8 +47,8 @@ function App() {
 
     { notes.map((note) => {
        return <Note
-        key={note.id}
-        noteId={note.id}
+        key={note._id}
+        noteId={note._id}
         title={note.title}
         content={note.content}
         onDelete={deleteNote}
