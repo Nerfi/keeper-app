@@ -37,6 +37,7 @@ function CreateArea({ addNote }) {
     const newData =  fetch('http://localhost:3001/api/note', requestOptions)
         .then(response => response.json())
         .then(data => setNotes(data.id))
+        window.alert('Note save')
         .catch(err => console.log(err));
 
         if(!title || !content){
@@ -51,7 +52,10 @@ function CreateArea({ addNote }) {
     e.preventDefault();
 
   }
-
+  //not really working and dont know if I really needed
+  //useEffect(() => {
+    //addNotes();
+  //},[]);
 
 
   function touched(){

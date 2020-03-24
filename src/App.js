@@ -47,10 +47,10 @@ function App() {
       <Header />
       <CreateArea addNote={handleAdd} />
 
-    { notes.map((note, index) => {
+    { notes.map((note) => {
        return <Note
-        key={index}
-        id={index.id}
+        key={note.id}
+        noteId={note.id}
         title={note.title}
         content={note.content}
         onDelete={deleteNote}
