@@ -40,10 +40,6 @@ function CreateArea({ addNote }) {
         .catch(err => console.log(err));
         window.alert('Note save')
 
-        if(!title || !content){
-          alert("you need to provide a title or a content");
-          e.preventDefault();
-        }
       // the prop we send from the parent is call addNote, therefore in order to use that function in this component, since that function acepts a parameter
       //the parameter I'll revice is the new note, in this case a whole bunch of notes, that are added trought the newState function.
       addNote(notes);
