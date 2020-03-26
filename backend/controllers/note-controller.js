@@ -94,7 +94,7 @@ updateNote = async (req,res) => {
 
 deleteNote = async (req, res) => {
 
-  await Note.findOneAndDelete({_id: req.params.id}, (err, note) => {
+  await Note.findOneAndDelete({_id: new mongodb.ObjectID(req.params.id)}, (err, note) => {
 
     if(err) {
       return res.status(400).json({success: false, error: err})
