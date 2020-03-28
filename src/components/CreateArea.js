@@ -34,7 +34,7 @@ function CreateArea({ addNote }) {
         body: JSON.stringify({ title: title, content: content })
     };
 
-    const newData =  fetch('http://localhost:3001/api/note', requestOptions)
+    const newData = await fetch('http://localhost:3001/api/note', requestOptions)
         .then(response => response.json())
         .then(data => setNotes(data.id))
         .catch(err => console.log(err));

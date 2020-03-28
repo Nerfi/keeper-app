@@ -2,12 +2,13 @@ import React from "react";
 import UpdateComponent from "./Update";
 
 function Note({ title, content, onDelete, noteId, onUpdate }) {
+  //delete action not working
 
   function removeNote(){
 
     const deleteNote = fetch(`http://localhost:3001/api/delete/${noteId}`,{
       method: 'DELETE'
-    }).then(() => onDelete(noteId))
+    }).then(() => onDelete(noteId)) //probar a borrar esta linea para saber lo que pasa cuando mandamos la request
     .catch(err => console.log(err));
   }
 

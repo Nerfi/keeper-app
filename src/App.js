@@ -32,8 +32,10 @@ function App() {
 
   //delete item
   function deleteNote(id){
-   setNotes(prevNotes => {
-      return prevNotes.filter((item, index) =>{
+    //adding a copy of the old state[], not a good practise to have any action in our main array
+    const oldCopy = [...notes];
+   setNotes(()=> {
+      return oldCopy.filter((item, index) =>{
         return id !== index;
       });
     });
